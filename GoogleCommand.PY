@@ -2,12 +2,29 @@
 # pip uninstall playsound
 # pip install playsound3
 
-# You also need to place your sound files in the same directory as this script.
+# You also need to place your sound and icon files in the same directory as this script.
 # The sound files should be named 'weather.mp3', 'time.mp3', 'news.mp3', and 'traffic.mp3'.
+# The icon file should be named 'icon.ico'.
 
 import tkinter as tk
 from playsound3 import playsound
 import threading
+import os
+import sys
+
+# PyInstaller-specific function to handle resource paths
+def resource_path(relative_path):
+    """
+    Get the absolute path to a resource file, handling PyInstaller's temporary
+    directory. This is crucial for packaging the app into an executable.
+    """
+    try:
+        # PyInstaller creates a temporary folder and stores the files there.
+        base_path = sys._MEIPASS
+    except Exception:
+        # If not running as a frozen executable, use the current directory.
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 # Define a function to play a sound in a separate thread.
 # This prevents the GUI from freezing while the sound plays.
@@ -15,7 +32,7 @@ def play_sound_async(file_path):
     """
     Plays a sound file asynchronously to avoid freezing the GUI.
     """
-    thread = threading.Thread(target=playsound, args=(file_path,))
+    thread = threading.Thread(target=playsound, args=(resource_path(file_path),))
     thread.daemon = True # Allows the thread to exit with the main program
     thread.start()
 
@@ -58,9 +75,12 @@ def play_traffic_sound():
 
 # --- Set up the main application window ---
 root = tk.Tk()
-root.title("Soundboard App")
+root.title("Google Command - FrenzyPenguin Media")
 # The window will now size itself to fit its contents automatically.
 root.configure(bg="#f0f0f0") # Light gray background
+
+# Set the window icon using the PyInstaller-friendly function
+root.iconbitmap(resource_path('icon.ico'))
 
 # Use a Frame to contain the buttons for better layout control
 main_frame = tk.Frame(root, bg="#f0f0f0")

@@ -1,5 +1,5 @@
 # GoogleCommand
-TTS Google Commands
+TTS Google Nest/Assistant Commands
 
 Not able to speak to Google Assistant? Just lazy? Use these four buttons to get some big features out of your Google Nest!
 

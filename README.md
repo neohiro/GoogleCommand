@@ -1,4 +1,8 @@
 # GoogleCommand
+[![Python 3.x](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org/downloads/)
+[![Platform](https://img.shields.io/badge/platform-Windows-lightgray.svg)](https://github.com/)
+[![Build Status](https://github.com/neohiro/GoogleCommand/actions/workflows/release.yml/badge.svg)](https://github.com/neohiro/GoogleCommand/actions)
+
 TTS Google Nest/Assistant Commands
 
 Not able to speak to Google Assistant? Just lazy? Use these four buttons to get some big features out of your Google Nest!

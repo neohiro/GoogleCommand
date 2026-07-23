@@ -38,7 +38,7 @@ jobs:
       - name: Build Windows Executable
         run: |
           pyinstaller --noconfirm --onedir --windowed --add-data "*.mp3;." --icon=icon.ico GoogleCommand.PY
-          Compress-Archive -Path "dist\GoogleCommand\*" -DestinationPath "GoogleCommand-Windows.zip" -Force
+          Compress-Archive -Path "dist\GoogleCommand" -DestinationPath "GoogleCommand-Windows.zip" -Force
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
